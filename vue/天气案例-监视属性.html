@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气案例-监视属性</title>
+    <script src="../assets/vue2.js"></script>
+    <!-- 引入element-ui -->
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h4>今天天气{{weather}}</h4>
+        <el-button round type="mini" @click="handleWeather">切换</el-button>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data(){
+                return{
+                    isHot:true,
+                    weather:""
+                }
+            },
+            methods:{
+                handleWeather(){
+                    this.isHot = !this.isHot
+                }
+            },
+            watch:{
+                isHot:{
+                    immediate:true,// 初始化的时候调用一下handler
+                    handler(newValue,oldValue){
+                        console.log("isHot发生了变化",`新的值是${newValue}，就得值是${oldValue}`)
+                        this.weather = this.isHot ? '炎热':'凉爽'
+                    }
+                }
+            }
+        })
+        vm.$mount("#app")
+    </script>
+</body>
+</html>
