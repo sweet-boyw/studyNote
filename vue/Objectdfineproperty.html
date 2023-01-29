@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.defineproperty</title>
+</head>
+<body>
+    <script>
+        let number = 19
+        let person = {
+            name:"sweetBoy",
+            sex:"man",
+            // age:18
+        }
+        Object.defineProperty(person,'age',{
+            // value:18, //这样设置的属性是不可枚举的
+            enumerable:true,// 开启可枚举
+            // writable:true,//控制属性可以被修改
+            // configurable:true//控制属性是否可以被删除
+            // 第二种写法
+            get(){
+                return number
+            },
+            set(value){
+                console.log('有人修改了age',value)
+            }
+        })
+        console.log(Object.keys(person))
+        console.log(Object.values(person))
+        console.log(person)
+    </script>
+</body>
+</html>

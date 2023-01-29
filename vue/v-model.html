@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model</title>
+    <script src="../assets/vue2.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-model只能用于表单 -->
+        <input type="text" v-model="message">
+        <span>{{message}}</span>
+    </div>
+    <script>
+        Vue.config.productionTRip = false
+        const vm = new Vue({
+            data(){
+                return{
+                    message:""
+                }
+            }
+        })
+        vm.$mount("#app")
+    </script>
+</body>
+</html>
