@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据代理基础</title>
+    <script src="../assets/vue2.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{obj1}}
+    </div>
+    <script>
+        // let obj = {x:"x"}
+        // let obj1 = {y:"y"}
+        // console.log(obj1)
+        // Object.defineProperty(obj1,'x',{
+        //     enumerable:true,
+        //     get(){
+        //         return obj.x
+        //     },
+        //     set(value){
+        //         console.log("有人修改了x的值 ",value)
+        //         return value
+        //     }
+        // })
+        // 数据代理通过Object.defineProperty实现
+        // 在vue中每次创建实例的时候同时搜集了data中的数据存到了_data中，再通过数据代理创建了对应的属性比如name
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data(){
+                return{
+                    obj1
+                }
+            }
+        })
+        vm.$mount("#app")
+    </script>
+</body>
+</html>
