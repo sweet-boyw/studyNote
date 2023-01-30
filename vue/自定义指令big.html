@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令big</title>
+    <script src="../assets/vue2.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span>这个是{{n}}放大10倍的值</span>
+        <br>
+        <span v-big="n"></span>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data(){
+                return{
+                    n:99
+                }
+            },
+            directives:{
+                big(element,binding){
+                    console.log("1111")
+                    element.innerText = binding.value * 10
+                }
+            }
+        })
+        vm.$mount("#app")
+    </script>
+</body>
+</html>
