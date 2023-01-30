@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue中的set</title>
+    <script src="../assets/vue2.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="addSex">点我添加一个属性sex</button>
+        <br>
+        <span>name:{{person.name}}--age:{{person.age}}--sex:{{person.sex}}</span>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data(){
+                return{
+                    person:{
+                        name:"jimu",age:18
+                    }
+                }
+            },
+            methods:{
+                addSex(){
+                    // this.person.sex = 'man' // 不起作用
+                    this.$set(this.person,'sex','man')
+                }
+            }
+        })
+        vm.$mount("#app")
+    </script>
+</body>
+</html>
