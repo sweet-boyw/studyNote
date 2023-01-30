@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过滤器</title>
+    <script src="../assets/vue2.js"></script>
+    <script src="../assets/days.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>显示现在的时间</h2>
+        <h3>现在是{{fmtTime}}</h3>
+        <h3>现在是{{getTime()}}</h3>
+        <!-- 使用过滤器 time作为参数传给timeFter -->
+        <h3>现在是{{time | timeFter}}</h3>
+        <!-- 传参的过滤器 -->
+        <h3>现在是{{time | timeFter('YYYY-MM-DD')}}</h3>
+        <!-- 将前一个过滤器的返回值作为参数传给后面的过滤器 -->
+        <h3>现在是{{time | timeFter('YYYY-MM-DD') | mySplit}}</h3>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const vm  = new Vue({
+            data(){
+                return{
+                    time:Date.now()
+                }
+            },
+            computed:{
+                fmtTime(){
+                    return dayjs(this.time).format('YYYY MM-DDTHH:mm:ss SSS [Z] A') 
+                }
+            },
+            methods:{
+                getTime(){
+                    return dayjs(this.time).format('YYYY MM-DD HH:mm:ss')
+                }
+            },
+            filters:{
+                // 不携带别的参数
+                // timeFter(value,){
+                //     return dayjs(value).format('YYYY年MM月DD日 HH:mm:ss')
+                // },
+                // 携带参数str
+                timeFter(value,str='YYYY年MM月DD日 HH:mm:ss'){
+                    return dayjs(value).format(str)
+                },
+                // 将前一个过滤器的返回值作为参数传给后面的过滤器
+                mySplit(value){
+                    return `${value.split('-')[0]}年`
+                }
+            }
+        })
+        vm.$mount("#app")
+    </script>
+</body>
+</html>
