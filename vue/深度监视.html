@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深度监视</title>
+    <script src="../assets/vue2.js"></script>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <span>a的值是{{numbers.a}}</span>
+        <br>
+        <el-button @click="numbers.a ++">点击a+1</el-button>
+        <br>
+        <span>b的值是{{numbers.b}}</span>
+        <br>
+        <el-button @click="numbers.b ++">点击b+1</el-button>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data(){
+                return{
+                    numbers:{
+                        a:1,
+                        b:2
+                    }
+                }
+            },
+            watch:{
+                // 监视单个属性
+                // "numbers.a":{
+                //     handler(newValue,oldValue){
+                //         console.log("a的值发生了改变",`从${oldValue}变成了${newValue}`)
+                //     }
+                // }
+                // 监测所有numbers属性值的改变
+                numbers:{
+                    deep:true, // 开启深度监测
+                    handler(newValue,oldValue){
+                        console.log("numbers的值被改变了","newValue",newValue,"oldValue",oldValue)
+                    }
+                }
+            }
+        })
+        vm.$mount("#app")
+    </script>
+</body>
+</html>
