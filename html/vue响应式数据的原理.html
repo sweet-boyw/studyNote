@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue响应式数据的原理</title>
+</head>
+<body>
+    <script>
+        console.log('1')
+        let person = {
+            name:'sweet',
+            age:18
+        }
+        // 模拟vue2的数据响应的原理
+        // let p = {}
+        // Object.defineProperty(p,'name',{
+        //     get(){
+        //         console.log('有人读取了p对象中的name属性')
+        //         return person.name
+        //     },
+        //     set(value){
+        //         console.log('有人修改了p对象中的name属性')
+        //         person.name = value
+        //     }
+        // })
+        // Object.defineProperty(p,'age',{
+        //     get(){
+        //         console.log('有人读取了p对象中的age属性')
+        //         return person.age
+        //     },
+        //     set(value){
+        //         console.log('有人修改了p对象中的age属性')
+        //         person.age = value
+        //     }
+        // })
+        // 模拟vue3的响应式数据的原理
+        let p = new Proxy(person,{
+            get(target,propName){
+                console.log(target,propName)
+                console.log('有人读取了数据')
+                return target[propName]
+            },
+            // set不仅是修改还有新增
+            set(target,propName,value){
+                console.log(target,propName,value)
+                console.log('有人修改了数据属性')
+                target[propName] = value
+            },
+            // 比起Object.defineProperty新增了delete
+            deleteProperty(target,propName){
+                console.log("有人进行了删除操作",propName)
+                return delete target[propName] // delete target[propName] 存在返回值 true和false
+            }
+        })
+    </script>
+</body>
+</html>
