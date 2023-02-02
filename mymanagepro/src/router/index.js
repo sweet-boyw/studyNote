@@ -3,8 +3,12 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
     routes:[
+        {
+            path:'/login',
+            component:()=>import('@/views/Login')
+        },
         {
             path:'/home',
             component:()=>import('@/views/Home')
@@ -12,6 +16,18 @@ export default new Router({
     ],
     mode:'history'
 })
+
+router.beforeEach((to,from,next)=>{
+    if(to.path === '/login') {return next()}
+    const token = window.sessionStorage.getItem('Token')
+    if(!token){
+        next('/login')
+    }else{
+        next()
+    }
+})
+
+export default router
 
 // 第二种写法
 // const routes = []
