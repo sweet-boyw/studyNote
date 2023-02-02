@@ -38,4 +38,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 2.语法 const xxx = reactive(xxx),返回一个proxy对象    
 3.获取对象中的属性不需要.value    
 
-### 
+### setup的两个注意点
