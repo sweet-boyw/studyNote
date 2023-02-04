@@ -11,7 +11,7 @@ const router =  new Router({
         },
         {
             path:'/home',
-            component:()=>import('@/views/Home')
+            component:()=>import('@/views/page/Home.vue')
         }
     ],
     mode:'history'
