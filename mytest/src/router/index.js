@@ -7,8 +7,32 @@ const router = createRouter({
     history:routerHistory,
     routes:[
         {
-            path:'/home',
-            component:()=>import('@/views/Home')
+            psth:"*",
+            redirect:'/login'
+        },
+        {
+            path:'/login',
+            name:"Login",
+            component:()=>import("@/views/Login"),
+            meta:{
+                title:"登录"
+            }
+        },
+        {
+            path:'/layout',
+            name:'layOut',
+            component:()=>import('@/views/layOut'),
+            redirect:'/layout/index',
+            children:[
+                {
+                    path:'/layout/index',
+                    name:"Home",
+                    component:()=>import('@/views/Page/Home.vue'),
+                    meta:{
+                        title:"首页"
+                    }
+                }
+            ]
         }
     ]
 })
