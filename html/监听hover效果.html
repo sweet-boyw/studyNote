@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监听hover效果</title>
+    <script src="../assets/vue2.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+        }
+        span{
+            font-size: large;
+        }
+        .shover{
+            background-color: aquamarine;
+            border: 1px solid red;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <span>11111111</span>
+        <span>22222222</span>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        new Vue({
+            el:"#app",
+            data:{
+
+            },
+            mounted(){
+                document.querySelector('span').addEventListener("mouseover",function () {
+                    console.log("我是鼠标移入的事件传递");
+                });
+            }
+        })
+    </script>
+</body>
+</html>
