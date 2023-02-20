@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义指令</title>
+    <script src="../assets/vue2.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>当前的n的值是:<span v-text="n"></span></h2>
+        <h2>放大10倍后的值是：<span v-big="n"></span></h2>
+        <button @click="n++">点我n+1</button>
+    </div>
+    <script>
+        Vue.config.productionTip = false
+        const vm = new Vue({
+            data(){
+                return{
+                    n:10
+                }
+            },
+            directives:{
+                big(element,binding){
+                    console.log(element,binding)
+                    element.innerText = binding.value * 10
+                }
+            }
+        })
+        vm.$mount("#app")
+    </script>
+</body>
+</html>

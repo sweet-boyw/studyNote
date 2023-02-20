@@ -28,13 +28,16 @@
             directives:{
                 // 自定义指令在指令与元素成功绑定时被调用或者指令所在的模板被重新解析的时候被调用
                 fbind:{
+                    // 当指令与元素成功绑定的时候调用
                     bind(element,binding){
                         // console.log("11111",binding,element)
                         element.value = binding.value
                     },
+                    // 指令所在的元素插入页面时调用
                     inserted(element,binding){
                         element.focus()
                     },
+                    // 指令所在的模板被重新解析时调用
                     update(element,binding){
                         element.value = binding.value
                         element.focus()
