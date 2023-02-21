@@ -4,6 +4,8 @@ import './utils/element'
 import axios from 'axios'
 import router from './router'
 
+import ('@/utils/directives')
+
 Vue.config.productionTip = false
 
 Vue.prototype.$axios = axios
