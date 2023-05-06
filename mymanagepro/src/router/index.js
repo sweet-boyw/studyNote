@@ -1,60 +1,75 @@
 import Vue  from "vue";
 import Router from 'vue-router'
-// import Error from '@/views/Error'
 
 Vue.use(Router)
 
 const router =  new Router({
     routes:[
         {
+            path:"*",
+            redirect:"/login"
+        },
+        {
             path:'/login',
             component:()=>import('@/views/Login')
         },
         {
-            path:'/home',
-            component:()=>import('@/views/page/Home.vue')
+            path:'/register',
+            component:()=>import("@/views/Login/register")
+        },
+        {
+            path:"/lay",
+            component:()=>import("@/views/LayOut"),
+            children:[
+                {
+                    path:"home",
+                    component:()=>import("@/views/page/Home")
+                },
+                {
+                    path:"admin",
+                    component:()=>import("@/views/manage/administrative")
+                },
+                {
+                    path:"dict",
+                    component:()=>import("@/views/manage/Dict")
+                },
+                {
+                    path:"menu",
+                    component:()=>import("@/views/manage/menu")
+                },
+                {
+                    path:"user",
+                    component:()=>import("@/views/manage/user")
+                },
+                {
+                    path:"vmod",
+                    component:()=>import("@/views/manage/Vmodule")
+                },
+                {
+                    path:"role",
+                    component:()=>import("@/views/manage/role")
+                },
+                {
+                    path:"article",
+                    component:()=>import("@/views/message/article")
+                },
+                {
+                    path:"author",
+                    component:()=>import("@/views/message/author")
+                },
+                {
+                    path:"comment",
+                    component:()=>import("@/views/message/comment")
+                },
+                {
+                    path:"authority",
+                    component:()=>import("@/views/control/authority")
+                }
+            ]
         }
-    ],
-    mode:'history'
+    ]
 })
 
-// 动态添加单个路由
-// router.addRoute({
-//     path:'/404',
-//     component:Error
-// })
-
-
-router.beforeEach((to,from,next)=>{
-    if(to.path === '/login') {return next()}
-    const token = window.sessionStorage.getItem('Token')
-    const Nroutes = [] // 存储在Vuex里面的动态路由list
-    if(!token){
-        next('/login')
-    }else{
-        Nroutes.forEach(v =>{
-            v.children = addChindren(v.children)
-            v.component = routerCom(v.component)
-            router.addRoutes(v)
-        })
-        next()
-    }
-})
-
-function addChindren(children){
-    children.forEach(v => {
-        v.component = routerCom(v.component);
-        if (v.children != undefined) {
-            v.children = addChindren(v.children)
-        }
-    })
-    return children
-}
-
-function routerCom(path){
-    return (resolve) => require([`@/views/${path}`], resolve); // 不是很理解
-    // return `()=>import('${path}')` // 没试验不知道可不可以
-}
 
 export default router
 

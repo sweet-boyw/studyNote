@@ -52,18 +52,24 @@ export default {
         }
       };
     },
+    mounted(){
+      window.localStorage.setItem('Token',"fghdshfj")
+    }, 
     methods: {
       submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
+        console.log(this.$refs[formName],formName)
+        // this.$refs[formName].validate((valid) => {
+        //   if (valid) {
+        //     alert('submit!');
+        //   } else {
+        //     console.log('error submit!!');
+        //     return false;
+        //   }
+        // });
+        this.$router.push('/lay/home')
       },
       resetForm(formName) {
+        console.log(formName)
         this.$refs[formName].resetFields();
       }
     }

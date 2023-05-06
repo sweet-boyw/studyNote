@@ -1,0 +1,44 @@
+.login-container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #f1f2f6;
+}
+.welcome-word{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+img{
+    width: 5em;
+}
+p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2em;
+    font-weight: 500;
+}
+.login-tabs{
+    width: 20em;
+    height: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.code-input{
+    width: 120px;
+}
+.register{
+    font-size: .8em;
+    font-weight: 300;
+    color: #606266;
+}
+a{
+    text-decoration: none;
+    color: #409eff;
+}
+.login-btn{
+    width: 10em;
+}
