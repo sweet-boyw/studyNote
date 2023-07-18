@@ -35,7 +35,7 @@ const router =  new Router({
                 },
                 {
                     path:"menu",
-                    component:()=>import("@/views/manage/menu")
+                    component:()=>import("@/views/manage/Dmenu")
                 },
                 {
                     path:"user",
@@ -66,6 +66,10 @@ const router =  new Router({
                     component:()=>import("@/views/control/authority")
                 }
             ]
+        },
+        {
+            path:"/itaobao",
+            component:() =>import("@/views/itaobao")
         }
     ]
 })

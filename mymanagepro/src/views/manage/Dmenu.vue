@@ -1,6 +1,33 @@
 <!-- eslint-disable vue/no-deprecated-slot-scope-attribute -->
 <template>
   <div class="menu-container">
+    <div class="btn-box">
+      <div class="input-box">
+        <el-form ref="menuform" :model="menuform" label-width="100px" class="menuform">
+          <el-form-item label="菜单名称：">
+            <el-input v-model="menuform.name" class="el-input"></el-input>
+          </el-form-item>
+          <el-form-item label="菜单类型：">
+            <el-select v-model="menuform.type"  placeholder="请选择">
+              <el-option label="菜单" value="1"></el-option>
+              <el-option label="按钮" value="2"></el-option>
+              <el-option label="路由" value="3"></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="菜单权限：">
+            <el-select v-model="menuform.role"  placeholder="请选择">
+              <el-option label="管理员" value="1"></el-option>
+              <el-option label="普通操作员" value="2"></el-option>
+              <el-option label="系统操作员" value="3"></el-option>
+              <el-option label="测试管理员" value="4"></el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+      </div>
+      <div class="button-b">
+        <el-button type="success" icon="el-icon-plus" circle></el-button>
+      </div>
+    </div>
     <el-table
     :data="menulist"
     style="width: 100%"
@@ -60,7 +87,12 @@ export default {
   name:"menu",
   data(){
     return{
-      menulist:[]
+      menulist:[],
+      menuform:{
+        name:"",
+        type:"",
+        role:""
+      }
     }
   },
   mounted(){
@@ -88,11 +120,30 @@ export default {
 </script>
 
 <style scoped>
+.btn-box{
+  width: 100%;
+  height: 10em;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.input-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .el-table .warning-row {
     background: oldlace;
   }
 
   .el-table .success-row {
     background: #f0f9eb;
+  }
+  .menuform{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .el-input{
+    width: 300px;
   }
 </style>

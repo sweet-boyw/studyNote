@@ -1,5 +1,7 @@
 <template>
-    <div class="article-containner">article</div>
+    <div class="article-containner">
+        
+    </div>
 </template>
 <script>
 export default{

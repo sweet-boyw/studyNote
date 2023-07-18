@@ -138,12 +138,12 @@ export default {
   line-height: 3em;
   padding-left:  3em;
   font-size: larger;
-  font-weight: 600;
+  font-weight: 500;
 }
 .clk{
   background: #f1f2f6;
-  color: #409EFF;
-  transition: 2s;
+  color: #02142a;
+  transition: 1.5s;
 }
 
 .flod-btn{

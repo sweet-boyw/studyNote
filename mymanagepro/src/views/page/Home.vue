@@ -1,31 +1,33 @@
 <template>
   <div class="home-container">
-    1
-    <!-- <div id="thEchart" :style="{width:'100%',height:'850px'}" ></div> -->
+    <div class="head-tip">
+
+    </div>
   </div>
 </template>
 
 <script>
-// import {drawMap} from "@/utils/drawmap"
+// import wx from 'weixin-js-sdk'
 export default {
   data(){
     return{
-      
+      wxConfig: null,
     }
   },
   mounted(){
-    // console.log("111111111")
-    // this.drawFirstEchart()
+    
   },
   methods:{
-    // drawFirstEchart(){
-    //   let thEchart = document.getElementById('thEchart')
-    //   drawMap(thEchart)
-    // }
+    
   }
 }
 </script>
 
-<style>
-
+<style scoped>
+.head-tip{
+  width: 100%;
+  height: 10em;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
 </style>
