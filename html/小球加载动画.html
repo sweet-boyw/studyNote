@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小球加载动画</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            display: flex;
+            justify-content:center ;
+            align-items: center;
+            background-color: #333;
+        }
+        .loader{
+            width: 650px;
+            height: 200px;
+            position: relative;
+            /* background-color: pink; */
+        }
+        .loader span.ball{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: lightseagreen;
+            left: calc(var(--i) * 100px);
+        }
+        .loader span.shadow{
+            position: absolute;
+            bottom: -12.5px;
+            z-index: -1;
+            width: 50px;
+            height: 25px;
+            background-color: #000;
+            border-radius: 50%;
+            left: calc(var(--i) * 100px);
+        }
+        @keyframes jump {
+            0%,100%{
+                bottom: 150px;
+            }
+            40%,60%{
+                bottom: 0;
+                height: 50px;
+            }
+            50%{
+                height: 25px;
+                filter: hue-rotate(180deg);
+            }
+        }
+        .loader span.ball{
+            animation:jump 2s linear infinite calc(var(--i) * 0.3s)
+        }
+        @keyframes shadow{
+            0%, 100%{
+                transform:scale(2);
+                opacity: 0.1;
+                filter: blur(5px);
+            }
+            40%, 60%{
+                transform: scale(1);
+                opacity: 1;
+                filter: blur(2px);
+            }
+        }
+        .loader span.shadow{
+            animation: shadow 2s linear infinite calc(var(--i) * 00.3s);
+        }
+    </style>
+</head>
+<body>
+   <div class="loader">
+    <span class="ball" style="--i:1"></span>
+    <span class="shadow" style="--i:1"></span>
+    <span class="ball" style="--i:2"></span>
+    <span class="shadow" style="--i:2"></span>
+    <span class="ball" style="--i:3"></span>
+    <span class="shadow" style="--i:3"></span>
+    <span class="ball" style="--i:4"></span>
+    <span class="shadow" style="--i:4"></span>
+    <span class="ball" style="--i:5"></span>
+    <span class="shadow" style="--i:5"></span> 
+   </div>
+</body>
+</html>

@@ -39,3 +39,4 @@ function sum(a:number,b:number):number{
 后续扩展(随着ts 升级增加的新的类型)   
 1.13.bigint   -- 使用较少的大整数   
 1.14.unkwon -- 用来描述类型并不确定的变量   
+any赋值的任何变量也会变成any，unknow只是自己是任意类型，赋值给别的类型不影响别的变量   

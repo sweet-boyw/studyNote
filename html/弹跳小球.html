@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>弹跳小球</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+        .ball{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #fff;
+            position: relative;
+            top: 400px;
+            left: 160px;
+            animation: falling 0.5s ease-in  infinite alternate;
+        }
+        .ground{
+            width: 400px;
+            height: 20px;
+            position: relative;
+            top: 400px;
+            left: 0;
+            background-color: #fff;
+        }
+        @keyframes falling{
+            0%{
+                transform: translateY(-300px) scale(1,1);
+            }
+            90%{
+                transform: scale(0.8,1.2);
+            }
+            100%{
+                transform: translateY(0) scale(1.2,0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="ball"></div>
+        <div class="ground"></div>
+    </div>
+</body>
+</html>

@@ -2,7 +2,21 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background-color: #f1f2f6;
+    color: #fff;
+    background-image: linear-gradient(124deg,#2c3e50,#27ae60,#2980b9,#e74c3c,#8e44ad);
+    background-size: 400%;
+    animation: bganimation 20s infinite;
+}
+@keyframes bganimation{
+    0%{
+        background-position: 0%, 50%;
+    }
+    50%{
+        background-position: 100%, 50%;
+    }
+    100%{
+        background-position: 0%, 50%;
+    }
 }
 .welcome-word{
     display: flex;
@@ -33,7 +47,7 @@ p{
 .register{
     font-size: .8em;
     font-weight: 300;
-    color: #606266;
+    color: #fff;
 }
 a{
     text-decoration: none;
@@ -41,4 +55,7 @@ a{
 }
 .login-btn{
     width: 10em;
+}
+.el-form-item__label,.el-tabs__item{
+    color: #fff;
 }

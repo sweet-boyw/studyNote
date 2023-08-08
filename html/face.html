@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>face</title>
+    <style>
+        body,html{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        .face{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: orange;
+            &::after{
+                content: '';
+                position: absolute;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60%;
+                height: 80px;
+                border-radius: 0 0 80px 80px;
+                background-color: beige;
+            }
+        }
+        .eyes-wrapper{
+            width: 65%;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 80px;
+            .eye{
+                width: 80px;
+                height: 80px;
+                background-color: #fff;
+                border-radius: 50%;
+                position: relative;
+                &::before{
+                    content: '';
+                    position: absolute;
+                    left: 5px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background-color: #000;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="face">
+        <div class="eyes-wrapper">
+            <div class="eye"></div>
+            <div class="eye"></div>
+        </div>
+    </div>
+    <script>
+        const eyes = document.querySelectorAll('.eye')
+        document.body.onmousemove = (e) =>{
+            eyes.forEach(dom =>{
+                let domRect = dom.getBoundingClientRect()
+                let eyeCenterX = domRect.left + dom.offsetWidth / 2
+                let eyeCenterY = domRect.top + dom.offsetHeight / 2
+                let rad = Math.atan2(e.clientX - eyeCenterX, e.clientY - eyeCenterY)
+                let deg = (rad * (180 / Math.PI) * -1) + 270
+                dom.style.transform = `rotate(${deg}deg)`
+            })
+        }
+    </script>
+</body>
+</html>

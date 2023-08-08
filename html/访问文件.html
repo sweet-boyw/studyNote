@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>访问文件</title>
+</head>
+<body>
+    <div class="main">
+        <button>打开文件夹</button>
+    </div>
+    <script>
+        const btn = document.querySelector('button')
+        btn.onclick = async function(){
+            try{
+                const handler =  await showDirectoryPicker()
+                console.log(handler)
+                processHandler(handler)
+            }catch{
+
+            }
+        }
+        async function processHandler(handler){
+            if(handler.kind === 'file'){
+                return
+            }
+            handler.children = []
+            const iter = await handler.entries()
+            // 异步迭代器
+            for await(const info of iter){
+                console.log(info)
+                const subhandle = await processHandler(info[1])
+                handler.children.push(subhandle)
+            }
+            return handler
+        }
+    </script>
+</body>
+</html>

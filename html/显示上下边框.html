@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>显示上下边框</title>
+    <style>
+        html{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            min-height: 100vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button{
+            color: #fff;
+            border: none;
+            background: none;
+            font-size: 25px;
+            font-weight: 600;
+        }
+        button::after,button::before{
+            content: '';
+            display: block;
+            width: 0%;
+            height: 2px;
+            background: #f44336;
+            transition: 0.5s;
+        }
+        button:hover::after,
+        button:hover::before{
+            width: 100%;
+        }
+        button::after{
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <button>显示上下边框</button>
+    </div>
+</body>
+</html>

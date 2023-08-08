@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try.catch</try></title>
+</head>
+<body>
+    <script>
+        let num1 = parseInt(Math.random() * (9999999 - 1000000) + 1000000)
+        console.log(num1)
+        let num2 = new Uint32Array(7)
+        console.log(num2)
+        window.crypto.getRandomValues(num2)
+        let tarnum = num2[0].toString().substr(0,7)
+        // parseInt(tarnum)
+        console.log(tarnum)
+        console.log(typeof(tarnum))
+    </script>
+</body>
+</html>
